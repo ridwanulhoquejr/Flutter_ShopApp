@@ -39,7 +39,15 @@ class Products with ChangeNotifier {
     ),
   ];
 
+  // since, our Products list is private we have to use get method to acces this products outside of this class or file
+
+  // A List of get all Items .
   List<Product> get items {
     return [..._items];
+  }
+
+  // A List of get Items where isFavorite properties are true.
+  List<Product> get favItems {
+    return _items.where((prodItem) => prodItem.isFavorite).toList();
   }
 }

@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import 'package:my_shop/providers/cart.dart';
 import 'package:my_shop/providers/product.dart';
 import 'package:my_shop/screens/product_details_screen.dart';
 import 'package:provider/provider.dart';
@@ -8,7 +9,10 @@ import 'package:provider/provider.dart';
 class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // listen = false will restrict the re render when notifychange is called.
+
     final product = Provider.of<Product>(context, listen: false);
+    final cart = Provider.of<Cart>(context);
 
     return GridTile(
       child: GestureDetector(
@@ -43,7 +47,9 @@ class ProductItem extends StatelessWidget {
           ),
           trailing: IconButton(
             icon: Icon(Icons.shopping_cart),
-            onPressed: () {},
+            onPressed: () {
+              cart.addItem(product.id, product.price, product.title);
+            },
           ),
         ),
       ),

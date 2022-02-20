@@ -26,6 +26,7 @@ class ProductsGrid extends StatelessWidget {
         // alternative way, which we should use when we have to pass provider via Grid/ListView
         value: products[i],
         child: ProductItem(
+            // Now we dont have to pass this arguments as all of the data we have acces in Provider<>.of.contex()
             // products[i].id,
             // products[i].title,
             // products[i].imageUrl,
